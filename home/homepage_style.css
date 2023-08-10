@@ -188,6 +188,7 @@ button {
     background-color: #add9ff;
     border-radius: 10px;
     padding: 20px;
+    height: 200px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
 
@@ -197,16 +198,30 @@ button {
 
   .card p {
     margin-bottom: 0;
+    font-weight: bold;
   }
   .card {
     width: 300px;
+    position: relative;
     background-color: #add9ff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
-  
+  .card button{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    padding-left: 50px;
+    margin-bottom: 20px;
+  }
   .card:hover {
     transform: scale(1.05);
   }
@@ -216,8 +231,4 @@ button {
   .card-container a {
     text-decoration: none;
     color: #333; /* Change this color to your preferred color */
-  }
-
-  .card-container a:hover {
-    color: #555; /* Change this color to your preferred hover color */
   }
