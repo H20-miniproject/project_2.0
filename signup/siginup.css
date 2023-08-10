@@ -1,0 +1,202 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    width: 100%;
+    zoom: 90%;
+    padding: 100px;
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 100px;
+  }
+  
+  .container:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url("http://localhost/H20/images/water.jpg") no-repeat center;
+    background-size: cover;
+    filter: blur(50px);
+    z-index: -1;
+  }
+  
+  .contact-box {
+    max-width: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+  }
+  
+  
+  .right {
+    padding: 20px 20px;
+  }
+  
+  h2 {
+    position: relative;
+    padding: 0 0 10px;
+    margin-bottom: 10px;
+  }
+  
+  h2:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: #2eaacc;
+  }
+  
+  .field {
+    width: 100%;
+    border: 2px solid;
+    border-color: rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: .3s;
+    resize: none;
+  }
+  
+  .field select {
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+  
+  .field:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  textarea {
+    min-height: 150px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background-color: #2eaacc;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: rgba(30, 85, 250, 0.47);
+  }
+  
+  .field:focus {
+    border: 2px solid rgba(30, 85, 250)
+  }
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .tabs.word{
+    word-wrap: break-word;
+  }
+  
+  .tablink {
+    background-color: #f1f1f1;
+    border: white solid 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100px;
+  }
+  
+  .tablink:hover {
+    background-color: #6bb1c4;
+  }
+
+  .tablink.active{
+    border:1px solid blue;
+  }
+  
+  .tabcontent {
+    display: none;
+  }
+  
+  .tabcontent.active {
+    display: block;
+  }
+  
+  .tablink:hover::before,
+  .tablink:focus::before,
+  .tablink:active::before {
+    opacity: 0.1;
+  }
+  
+  .tablink:active::after {
+    opacity: 1;
+  }
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tablink {
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-right: 10px; /* Add margin-right for space between tabs */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  }
+  
+  /* Go from zero to full opacity */
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+    
+  
+  

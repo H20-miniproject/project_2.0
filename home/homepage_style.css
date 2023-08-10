@@ -1,0 +1,223 @@
+/* Your CSS styles for the navigation bar can go here */
+/* Make sure to add the responsive styles using media queries */
+/* For simplicity, I'll just add some basic styles for the navbar */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@media screen and (min-width: 900px) {
+  article {
+    padding: 1rem 3rem;
+  }
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+.navigation {
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #add9ff; /* You can change the color as needed */
+  color: #fff;
+  display: flex;
+  z-index: 999;
+  justify-content: space-between;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: .3s;
+}
+.nav-links a:hover {
+  font-weight: bold;
+  letter-spacing: .5px;
+}
+
+#section1{
+    height: 100vh;
+    height: calc(100vh - 40px);
+    background-image: url("../images/13237374_BG-9.jpg"); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+
+.section1-banner{
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    padding-left: 125px;
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading h4 h3{
+    text-align: center;
+}
+.heading-image{
+    padding-left: 200px;
+    position: relative;
+    animation: floatAnimation 3s ease infinite;
+}
+   @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+button {
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --hover-color: #ffffff;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    width: 175px;
+    margin-top: 10px;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    padding-left: 55px;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  button a{
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  button .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  button .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  button:hover {
+    background-color: var(--hover-color);
+  }
+  
+  button:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  button:hover .arrow:before {
+    right: 0;
+  }
+  #section2
+  {
+    height: 100vh;
+    height: calc(100vh - 40px);
+    padding-top: 50px;
+    transition: transform 0.5s ease;
+  }
+  .section2-banner
+  {
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+  }
+
+  .card {
+    width: 300px;
+    background-color: #add9ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  .card p {
+    margin-bottom: 0;
+  }
+  .card {
+    width: 300px;
+    background-color: #add9ff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .card-container a {
+    text-decoration: none;
+  }
+  .card-container a {
+    text-decoration: none;
+    color: #333; /* Change this color to your preferred color */
+  }
+
+  .card-container a:hover {
+    color: #555; /* Change this color to your preferred hover color */
+  }

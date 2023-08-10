@@ -1,0 +1,78 @@
+body
+{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.heading
+{
+    width: 100%;
+    padding: 1px;
+    padding-left: 10px;
+    background-color: rgb(0, 146, 146);
+    color: black;
+}
+.tablecontent
+{
+    margin: 20px;
+}
+table{
+    width: 100%;
+}
+table tr th
+{
+    text-align: left;
+    background-color: rgb(11, 173, 173);
+    color: white;
+    padding-left: 5px;
+    border: 2px solid black;
+}
+.btn_add_admin
+{
+    background-color: rgb(46, 43, 56);
+    border: 2px solid rgb(46, 43, 56);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    padding: 8px; 
+    transition: .1s;
+}
+.btn_add_admin:hover
+{
+    background-color: rgb(110, 110, 110);
+    border: 2px solid rgb(110, 110, 110);
+}
+.upd_btn
+{
+    background-color: rgb(66, 224, 74);
+    border: 2px solid rgb(66, 224, 74);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 8px; 
+    transition: .1s;
+}
+.upd_btn:hover
+{
+    background-color: rgb(37, 168, 44);
+    border: 2px solid rgb(37, 168, 44);
+}
+.del_btn
+{
+    background-color: rgb(221, 95, 93);
+    border: 2px solid rgb(221, 95, 93);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 8px; 
+    transition: .1s;
+}
+.del_btn:hover
+{
+    background-color: rgb(224, 53, 50);
+    border: 2px solid rgb(224, 53, 50);
+}
+a{
+    text-decoration: none;
+}
+.del_btn.disabled {
+    opacity: 0.5; /* Adjust the opacity value as needed */
+    pointer-events: none; /* Disable pointer events to prevent interactions */
+    transition: opacity 0.3s ease; /* Apply a smooth transition */
+}
