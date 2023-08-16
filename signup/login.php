@@ -37,8 +37,6 @@
 		</div>
 	</div>
 	<?php
-		$mailid = $_POST['mailid'];
-		$password = $_POST['password'];
 		 $conn = new mysqli('localhost','root','','h2o_watersupply');
 		 if($conn->connect_error)
 		 {
@@ -48,6 +46,8 @@
 		 {
 			if(isset($_POST['submit']))
 			{
+				$mailid = $_POST['mailid'];
+				$password = $_POST['password'];
 				if($_POST['choice']=="user")
 				{
 					$data = $conn->query("SELECT user_password FROM user_table WHERE user_email = '$mailid';");
