@@ -141,18 +141,19 @@
           <form action="signup_php.php" method="post" onsubmit="return non_retailer_validation()">
             <table>
               <tr>
+              <span id="non_retailer_status" style="color: red;font-weight: bold;" class="fade-in"></span>
                 <td colspan="2">
                   <input class="field" type="text" placeholder="username" name="nonretailername">
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
-                  <input class="field" type="email" placeholder="email" name="nonretaileremail">
+                  <input class="field" type="email" placeholder="email" name="nonretaileremail" onfocusout='non_retailer_checkemail()'>
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
-                  <input type="tel" class="field" placeholder="phone number" maxlength="10" name="phno" id="phnoinput" onfocusout="checkphonenumber()" required>
+                  <input type="tel" class="field" placeholder="phone number" maxlength="10" name="phno" id="phnoinput" onfocusout="non_retailer_checkphonenumber()" required>
                 </td>
               </tr>
               <tr>
@@ -160,7 +161,7 @@
                   <input class="field" type="password" placeholder="password" name="pass1">
                 </td>
                 <td>
-                  <input class="field" type="password" placeholder="confirm password" name="pass2">
+                  <input class="field" type="password" placeholder="confirm password" name="pass2" onfocusout="retailer_checkpassword()">
                 </td>
               </tr>
               <tr>
@@ -168,7 +169,7 @@
                   <input class="field" type="text" placeholder="place" name="non_retailer_place">
                 </td>
                 <td>
-                  <input class="field" type="tel" placeholder="zip code" maxlength="6" name="zip">
+                  <input class="field" type="tel" placeholder="zip code" maxlength="6" name="zip" onfocusout="non_retailer_checkzipcode()">
                 </td>
               </tr>
               <tr>
@@ -204,59 +205,25 @@
     }
     function retailer_validation()
     {
-      var phno = document.getElementsByName('phno')[1].value;
-      if(phno.length<10)
+      if(document.getElementById("retailer_status").innerText == "")
       {
-        alert("Incorrect Phonenumber")
+        return true;
+      }
+      else
+      {
         return false;
       }
-      var pass1 = document.getElementsByName('pass1')[1].value;
-      var pass2 = document.getElementsByName('pass2')[1].value;
-      if(pass1!=pass2)
-      {
-        alert("Incorrect Password")
-        return false;
-      }
-      if(pass1.length<6 || pass2.length<6)
-      {
-        alert("Password should have 6+ characters")
-        return false;
-      }
-      var zip = document.getElementsByName('zip')[1].value;
-      if(zip.length<6)
-      {
-        alert("Incorrect Zipcode")
-        return false;
-      }
-      return true;
     }
     function non_retailer_validation()
     {
-      var phno = document.getElementsByName('phno')[2].value;
-      if(phno.length<10)
+      if(document.getElementById("non_retailer_status").innerText == "")
       {
-        alert("Incorrect Phonenumber")
+        return true;
+      }
+      else
+      {
         return false;
       }
-      var pass1 = document.getElementsByName('pass1')[2].value;
-      var pass2 = document.getElementsByName('pass2')[2].value;
-      if(pass1!=pass2)
-      {
-        alert("Incorrect Password")
-        return false;
-      }
-      if(pass1.length<6 || pass2.length<6)
-      {
-        alert("Password should have 6+ characters")
-        return false;
-      }
-      var zip = document.getElementsByName('zip')[2].value;
-      if(zip.length<6)
-      {
-        alert("Incorrect Zipcode")
-        return false;
-      }
-      return true;
     }
   </script>
 

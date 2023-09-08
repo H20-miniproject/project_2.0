@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,17 +54,28 @@
 				$password = $_POST['password'];
 				if($_POST['choice']=="user")
 				{
-					$data = $conn->query("SELECT user_password FROM user_table WHERE user_email = '$mailid';");
+					$data = $conn->query("SELECT user_password,user_name FROM user_table WHERE user_email = '$mailid'");
 					if($data->num_rows>0)
 					{
-						$pass =  $data->fetch_assoc()['user_password'];
-						if($pass == $password)
+						while($result=$data->fetch_assoc())
 						{
-							echo "<script>alert('Successfully logged in')</script>";
+							$pass = $result['user_password'];
+							$name = $result['user_name'];
+							if($pass == $password)
+						{
+							session_start();
+
+
+							if ($_SERVER["REQUEST_METHOD"] == "POST") {
+								$_SESSION["user_name"] = $name; // Store the name in a session variable
+								header("Location: http://localhost/H20/user/user_dashboard.php"); // Redirect to page2.php
+								exit();
+							}
 						}
 						else
 						{
 							echo "<script>alert('Wrong password')</script>";
+						}
 						}
 					}
 					else

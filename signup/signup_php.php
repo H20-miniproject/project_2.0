@@ -42,11 +42,11 @@
                 echo "null";
             }
         }
-        if(isset($_POST['nonretaileremail']))
+        if(isset($_POST['non_retailer_email']))
         {
-            $emailId=$_POST['nonretaileremail'];
+            $emailId=$_POST['non_retailer_email'];
 
-            $checkdata=" SELECT non_retailer_email FROM non_retailers_table WHERE non_retailer_email='$emailId' ";
+            $checkdata = "SELECT non_retailer_email FROM non_retailers_table WHERE non_retailer_email='$emailId'";
 
             $result = $conn->query($checkdata);
 
@@ -85,13 +85,13 @@
             if($conn->query($sql_query)==True)
             {
                 echo "<script>alert('Value inserted successfully')</script>";
-                echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/login.php';</script>";
+                echo "<script>window.location.href = 'http://localhost/H20/signup/login.php';</script>";
 
             }
             else
             {
                 echo "<script>alert('Something went wrong')</script>";
-                echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/signup.html';</script>";
+                echo "<script>window.location.href = 'http://localhost/H20/signup/signup.php';</script>";
             }
         }
 
@@ -116,19 +116,19 @@
                 $district_id = $row['d_id'];
             }
 
-                $sql_query = "INSERT INTO retailer_table(shopname,ownername,licenseno,retailer_phno,retailer_address,retailer_email,retailer_password,retailer_place,retailer_zipcode,retailer_district)
+                $sql_query = "INSERT INTO retailer_table(shopname,ownername,licenseno,retailer_phno,retailer_address,retailer_email,retailer_password,retailer_place,retailer_zipcode,retailer_district_id)
                 VALUES('$shopname','$ownername','$licensenumber','$retailer_phonenumber','$retailer_address','$retailer_email','$retailer_password','$retailer_place','$retailer_zip','$district_id');";
 
                 if($conn->query($sql_query)==True)
                 {
                     echo "<script>alert('Value inserted successfully')</script>";
-                    echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/login.php';</script>";
+                    echo "<script>window.location.href = 'http://localhost/H20/signup/login.php';</script>";
 
                 }
                 else
                 {
                     echo "<script>alert('Something went wrong')</script>";
-                    echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/signup.html';</script>";
+                    echo "<script>window.location.href = 'http://localhost/H20/signup/signup.php';</script>";
                 }
             }
 
@@ -150,19 +150,19 @@
                 $district_id = $row['d_id'];
             }
 
-                $sql_query = "INSERT INTO non_retailers_table(non_retailer_name,non_retailer_email,non_retailer_phno,non_retailer_password,non_retailer_place,non_retailer_zipcode,non_retailer_district)
+                $sql_query = "INSERT INTO non_retailers_table(non_retailer_name,non_retailer_email,non_retailer_phno,non_retailer_password,non_retailer_place,non_retailer_zipcode,non_retailer_district_id)
                           VALUES('$nonretailername','$nonretaileremail','$nonretailerphno','$nonretailerpassword','$nonretailerplace','$nonretailerzipcode','$district_id');";
 
                 if($conn->query($sql_query)==True)
                 {
                     echo "<script>alert('Value inserted successfully')</script>";
-                    echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/login.php';</script>";
+                    echo "<script>window.location.href = 'http://localhost/H20/signup/login.php';</script>";
 
                 }
                 else
                 {
                     echo "<script>alert('Something went wrong')</script>";
-                    echo "<script>window.location.href = 'http://localhost/php_works/H20/project%20code%20files/signup/signup.html';</script>";
+                    echo "<script>window.location.href = 'http://localhost/H20/signup/signup.php';</script>";
                 }
             }
         }

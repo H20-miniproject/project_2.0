@@ -36,13 +36,13 @@
                 if($conn->query($sql_query)==True)
                 {
                     $_SESSION['msg'] = "Admin added successfully";
-                    header("Location: http://localhost/H20/admin/admin.php");
+                    header("Location: http://localhost/H20/admin/admin_management.php");
 
                 }
                 else
                 {
                     $_SESSION['msg'] = "Something went wrong";
-                    header("Location: http://localhost/H20/admin/admin.php");
+                    header("Location: http://localhost/H20/admin/admin_management.php");
                 }
             }
         }

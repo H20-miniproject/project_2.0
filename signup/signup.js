@@ -138,7 +138,7 @@ function show_user_error()
 
 }
 
-//USER VALIDATION
+//RETAILER VALIDATION
 //Function for email validation
 function retailer_checkemail()
 {
@@ -257,6 +257,129 @@ function show_retailer_error()
     document.getElementById("retailer_status").innerText = "";
   } else {
     document.getElementById("retailer_status").innerText = error_msg[error_msg.length-1];
+  }
+
+}
+
+//NON-RETAILER VALIDATION
+//Function for email validation
+function non_retailer_checkemail()
+{
+  var email = document.getElementsByName('nonretaileremail')[0].value;
+  if(email)
+  {
+    $.ajax({
+      type: 'post',
+      url: 'signup_php.php',
+      data:{
+       non_retailer_email:email,
+      },
+      success: function (response) {
+        if(response == "Email Already Exist")
+        {
+          if(!("Email Already Exist" in error_msg))
+          {
+            error_msg.push("Email Already Exist");
+            show_non_retailer_error();
+          }
+        }
+        else
+        {
+          var indexToRemove = error_msg.indexOf("Email Already Exist");
+          if (indexToRemove !== -1) {
+            error_msg.splice(indexToRemove, 1);
+          }
+          show_retailer_error();
+        }
+      }
+    });
+  }
+}
+//Function for phone number validation
+function non_retailer_checkphonenumber()
+    {
+      var phonenumber = document.getElementsByName('phno')[2].value;
+      var regex = new RegExp("[6-9]{1}[0-9]{9}");
+      if(!regex.test(phonenumber))
+      {
+        if(!("invalid phone number" in error_msg))
+        {
+          error_msg.push("invalid phone number");
+          show_non_retailer_error();
+        }
+      }
+      else
+      {
+        var indexToRemove = error_msg.indexOf("invalid phone number");
+        if (indexToRemove !== -1) {
+          error_msg.splice(indexToRemove, 1);
+        }
+        show_non_retailer_error();
+      }
+    }
+
+//function for zip code validation
+  function non_retailer_checkzipcode()
+    {
+      var zipcode = document.getElementsByName('zip')[2].value;
+      if(zipcode.length !== 6)
+      {
+        if(!("invalid zipcode" in error_msg))
+        {
+          error_msg.push("invalid zipcode");
+          show_non_retailer_error();
+        }
+      }
+      else
+      {
+        var indexToRemove = error_msg.indexOf("invalid zipcode");
+        if (indexToRemove !== -1) {
+          error_msg.splice(indexToRemove, 1);
+        }
+        show_non_retailer_error();
+      }
+    }
+  //Function for password validation
+function retailer_checkpassword()
+{
+  var pass1 = document.getElementsByName('pass1')[2].value;
+  var pass2 = document.getElementsByName('pass2')[2].value;
+  if(pass1 != pass2)
+  {
+    if(!("Password not same" in error_msg))
+        {
+          error_msg.push("Password not same");
+          show_non_retailer_error();
+        }
+  }
+  else if (pass1.length < 6 || pass2.length < 6)
+  {
+    if(!("password should have 6+ characters" in error_msg))
+        {
+          error_msg.push("password should have 6+ characters");
+          show_non_retailer_error();
+        }
+  }
+  else
+  {
+    var indexToRemove = error_msg.indexOf("Password not same");
+    if (indexToRemove !== -1) {
+      error_msg.splice(indexToRemove, 1);
+    }
+    var indexToRemove2 = error_msg.indexOf("password should have 6+ characters");
+    if (indexToRemove2 !== -1) {
+      error_msg.splice(indexToRemove2, 1);
+    }
+    show_non_retailer_error();
+  }
+}
+
+function show_non_retailer_error()
+{
+  if (error_msg && error_msg.length === 0) {
+    document.getElementById("non_retailer_status").innerText = "";
+  } else {
+    document.getElementById("non_retailer_status").innerText = error_msg[error_msg.length-1];
   }
 
 }

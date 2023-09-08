@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,17 +27,11 @@
 			</div>
 		</div>
 	<?php
-		$mailid = $_POST['mailid'];
-		$password = $_POST['password'];
-		$conn = new mysqli('localhost','root','','h2o_watersupply');
-		if($conn->connect_error)
-		{
-			echo "<script>alert('Something went wrong')</script>";
-		}
-        else
-        {
+		include("../config/constants.php");
             if(isset($_POST['submit']))
             {
+				$mailid = $_POST['mailid'];
+				$password = $_POST['password'];
                 $data = $conn->query("SELECT admin_name,admin_mailid,admin_password from admin_table where admin_mailid = '$mailid' and admin_password = '$password'");
                 if($data->num_rows> 0)
                 {
@@ -43,7 +41,7 @@
 
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							$_SESSION["user_name"] = $name; // Store the name in a session variable
-							header("Location: http://localhost/H20/admin/admin.php"); // Redirect to page2.php
+							header("Location: http://localhost/H20/admin/admin_home_page.php"); // Redirect to page2.php
 							exit();
 						}
 	
@@ -53,7 +51,6 @@
                     echo "<script>alert('wrong username or password')</script>";
                 }
             }
-        }
 	?>
 </body>
 </html>

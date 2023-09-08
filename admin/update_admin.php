@@ -42,40 +42,6 @@
             });
         }
         }
-        function checkpassword()
-        {
-        var pass1 = document.getElementsByName('password')[0].value;
-        var pass2 = document.getElementsByName('c_password')[0].value;
-        if(pass1 != pass2)
-        {
-            if(!("Password not same" in error_msg))
-                {
-                error_msg.push("Password not same");
-                show_error();
-                }
-        }
-        else if (pass1.length < 6 || pass2.length < 6)
-        {
-            if(!("password should have 6+ characters" in error_msg))
-                {
-                error_msg.push("password should have 6+ characters");
-                show_error();
-                }
-        }
-        else
-        {
-            var indexToRemove = error_msg.indexOf("Password not same");
-            if (indexToRemove !== -1) {
-            error_msg.splice(indexToRemove, 1);
-            }
-            var indexToRemove2 = error_msg.indexOf("password should have 6+ characters");
-            if (indexToRemove2 !== -1) {
-            error_msg.splice(indexToRemove2, 1);
-            }
-            show_error();
-        }
-        }
-
         function show_error()
         {
         if (error_msg && error_msg.length === 0) {
@@ -101,16 +67,35 @@
 <body>
 	<div class="container">
 			<div class="right">
-				<h2>ADMIN SIGN UP</h2>
+				<h2>ADMIN UPDATE</h2>
                 <span id="status" style="color:red;font-weight:bold;" class="fade-in"></span>
-				<form method="POST" action="add_admin_php.php">
+				<form method="POST" action=" ">
                 <input type="text" class="field" placeholder="Name" name="name" required>
 				<input type="email" class="field" placeholder="Mail id" name="mailid" onfocusout="checkemail()" required>
-				<input type="password" class="field" placeholder="Password" name="password" required>
-                <input type="password" class="field" placeholder="Confirm Password" name="c_password" onfocusout="checkpassword()" required>
 				<button class="btn" type="submit" name="submit" onsubmit="return validation()">Submit</button>
 				</form>
 			</div>
 		</div>
+        <?php
+            session_start();
+            include("../config/constants.php");
+            $id = $_GET['id'];
+            if(isset($_POST['submit']))
+            {
+                $name = $_POST['name'];
+                $mailid = $_POST['mailid'];
+                $res = $conn->query("UPDATE admin_table SET admin_name = '$name',admin_mailid = '$mailid' WHERE  admin_id = '$id'");
+                if($res == True)
+                {
+                    $_SESSION['msg'] = "Admin updated successfully";
+                    header("Location: http://localhost/H20/admin/admin_management.php");
+                }
+                else
+                {
+                    $_SESSION['msg'] = "Admin updation failed!!";
+                    header("Location: http://localhost/H20/admin/admin_management.php");
+                }
+            }
+        ?>
 </body>
 </html>

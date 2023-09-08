@@ -6,11 +6,11 @@
     if($res == true)
     {
         $_SESSION['msg'] = "Admin deleted successfully";
-        header("Location: http://localhost/H20/admin/admin.php");
+        header("Location: http://localhost/H20/admin/admin_management.php");
     }
     else
     {
         $_SESSION['msg'] = "Admin deletion unsuccessfull";
-        header("Location: http://localhost/H20/admin/admin.php");
+        header("Location: http://localhost/H20/admin/admin_management.php");
     }
 ?>
