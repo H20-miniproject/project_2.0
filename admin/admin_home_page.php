@@ -1,6 +1,6 @@
 <?php
-  session_start();
   include("../config/constants.php");
+  include("../config/header.php");
   if (isset($_SESSION["user_name"])) {
     $userName = $_SESSION["user_name"];
   } else {
@@ -11,117 +11,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin_home_page_style.css">
+	<style>
+    @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<!-- My CSS -->
-	<link rel="stylesheet" href="style.css">
-
-	<title>H20</title>
 </head>
 <body>
+<div class="first_container">
+    <div class="card">
+        <?php
+        $data = $conn->query("SELECT * FROM admin_table");
+        ?>
+        <h2><i class="fas fa-user-shield"></i> ADMIN</h2>
+        <h3><?php echo $data->num_rows  ?></h3>
+    </div>
+    <div class="card">
+        <?php
+        $data = $conn->query("SELECT * FROM user_table");
+        ?>
+        <h2><i class="fas fa-user"></i> USER</h2>
+        <h3><?php echo $data->num_rows  ?></h3>
+    </div>
+    <div class="card">
+        <?php
+        $data = $conn->query("SELECT * FROM retailer_table");
+        ?>
+        <h2><i class="fas fa-store"></i> RETAILER</h2>
+        <h3><?php echo $data->num_rows  ?></h3>
+    </div>
+    <div class="card">
+        <?php
+        $data = $conn->query("SELECT * FROM non_retailers_table");
+        ?>
+        <h2><i class="fas fa-users"></i> NON-RETAILER</h2>
+        <h3><?php echo $data->num_rows  ?></h3>
+    </div>
+</div>
+<div class="container">
+<div class="dashboard-card">
+    <h2 class="card-title">
+	<i class="fas fa-cogs"></i> Account Management</h2>
+	<a href="http://localhost/H20/admin/admin_management.php"><button class="btn">CHECK</button></a>
+</div>
+<!-- Card 2 -->
+<div class="dashboard-card">
+    <h2 class="card-title"><i class="fas fa-chart-line"></i> Account Monitoring</h2>
+	<a href="http://localhost/H20/admin/account_monitoring.php"><button class="btn"> Button
+</button></a>
+</div>
+<!-- Card 3 -->
+<div class="dashboard-card">
+    <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Booking Management</h2>
+	<a href=""><button class="btn">CHECK</button></a>
+</div>
+<!-- Card 4 -->
+<div class="dashboard-card">
+    <h2 class="card-title"><i class="fas fa-money-check"></i> Payment Monitoring</h2>
+	<a href=""><button class="btn">CHECK</button></a>
+</div>
+</div>
 
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">Welcome <?php echo $userName?></span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="#">
-					<i class='bx bxs-dashboard' ></i>
-					<span class="text">Admin Dashboard</span>
-				</a>
-			</li>
-			<li>
-				<a href="http://localhost/H20/admin/admin_management.php">
-					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Account Mangement</span>
-				</a>
-			</li>
-			<li>
-				<a href="http://localhost/H20/admin/account_monitoring.php">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Account Monitoring</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">Payment Monitoring</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Request Monitoring</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-					<li>
-				<a href="http://localhost/H20/admin/admin_logout.php" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
-	<!-- SIDEBAR -->
-
-
-
-	<!-- CONTENT -->
-	<section id="content">
-	
-		<!-- MAIN -->
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>Admin Dashboard</h1>
-				</div>
-			</div>
-
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-        <li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>$2543</h3>
-						<p>Total Sales</p>
-					</span>
-				</li>
-			</ul>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-	
-
-	<script src="script.js"></script>
 </body>
 </html>
+<?php
+	include("../config/footer.php");
+?>

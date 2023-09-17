@@ -8,7 +8,7 @@
     <style> 
         header {
             background-color: #333;
-            padding: 10px;
+            padding: 2px;
             text-align: center;
         }
         header h1, header p {

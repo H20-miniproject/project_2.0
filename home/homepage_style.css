@@ -162,25 +162,29 @@ button {
   button:hover .arrow:before {
     right: 0;
   }
-  #section2
-  {
+  #section2 {
     height: 100vh;
     height: calc(100vh - 40px);
     padding-top: 50px;
     transition: transform 0.5s ease;
+ 
   }
+  
   .section2-banner
   {
     text-align: center;
-  }
+
+}
 
   .card-container {
     display: flex;
-    justify-content: center;
+    position:relative;
+    justify-content:l;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 40px;
+    padding-left: 250px;
   }
 
   .card {
@@ -202,7 +206,7 @@ button {
   }
   .card {
     width: 300px;
-    position: relative;
+    position:relative;
     background-color: #add9ff;
     border-radius: 10px;
     padding: 20px;
@@ -232,3 +236,29 @@ button {
     text-decoration: none;
     color: #333; /* Change this color to your preferred color */
   }
+.right-image {
+  float: right;
+  margin-left: 10px;
+  margin-top: -450px;
+  
+  /* Add any other styling you need for the image */
+
+  /* Define the animation */
+  animation-name: moveUpDown;
+  animation-duration: 2s; /* You can adjust the duration as needed */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Define the keyframes for the animation */
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0); /* Start and end position, no vertical movement */
+  }
+  50% {
+    transform: translateY(-20px); /* Move the image up by 20px at 50% of the animation */
+  }
+}
+
+  
+  

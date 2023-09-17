@@ -1,7 +1,3 @@
-<?php
-	session_start();
-	session_destroy();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +16,16 @@
 			</div>
 			<div class="right">
 				<h2>SIGN IN</h2>
+				<?php
+					session_start();
+					if(isset($_SESSION['msg']))
+					{
+						echo $_SESSION['msg'];
+						unset($_SESSION['msg']);
+					}
+				?>
 				<form method="POST" action="">
 				<select id="user-selection" class="field" name="choice">
-					<option>Select the user</option>
 					<option value="user">User</option>
 					<option value="retailer">Retailer</option>
 					<option value="non_retailer">Non_Retailer</option>
@@ -51,6 +54,7 @@
 			if(isset($_POST['submit']))
 			{
 				$mailid = $_POST['mailid'];
+				$_SESSION['user_mailid'] = $mailid;
 				$password = $_POST['password'];
 				if($_POST['choice']=="user")
 				{
@@ -63,7 +67,6 @@
 							$name = $result['user_name'];
 							if($pass == $password)
 						{
-							session_start();
 
 
 							if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,13 +77,15 @@
 						}
 						else
 						{
-							echo "<script>alert('Wrong password')</script>";
+							$_SESSION['msg'] = "Incorrect password";
+							header("Location: http://localhost/H20/signup/login.php"); // Redirect to page2.php
 						}
 						}
 					}
 					else
 					{
-						echo "<script>alert('Mailid not registered')</script>";
+						$_SESSION['msg'] = "Mail id not registered";
+						header("Location: http://localhost/H20/signup/login.php"); // Redirect to page2.php
 					}
 				}
 				if($_POST['choice']=="retailer")
@@ -95,12 +100,12 @@
 						}
 						else
 						{
-							echo "<script>alert('Wrong password')</script>";
+							$_SESSION['msg'] = "Incorrect password";
 						}
 					}
 					else
 					{
-						echo "<script>alert('Mailid not registered')</script>";
+						$_SESSION['msg'] = "Mail id not registered";
 					}
 				}
 				if($_POST['choice']=="non_retailer")
@@ -115,12 +120,12 @@
 						}
 						else
 						{
-							echo "<script>alert('Wrong password')</script>";
+							$_SESSION['msg'] = "Incorrect password";
 						}
 					}
 					else
 					{
-						echo "<script>alert('Mailid not registered')</script>";
+						$_SESSION['msg'] = "Mail id not registered";
 					}
 				}
 			}

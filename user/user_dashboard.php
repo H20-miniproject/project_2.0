@@ -1,6 +1,8 @@
 <?php
     include("../config/user_header.php");
     include("../config/constants.php");
+    $user_mailid = $_SESSION['user_mailid'];
+    $_SESSION['user_mailid'] = $user_mailid;
     if (isset($_SESSION["user_name"])) {
         $userName = $_SESSION["user_name"];
       } else {
@@ -17,7 +19,6 @@
 <title>User Dashboard</title>
 </head>
 <body>
-<div class="tab-container">
   <div class="tab">
     <button class="tab-button active" onclick="openTab(event, 'tab1')">RETAILERS</button>
     <button class="tab-button" onclick="openTab(event, 'tab2')">NON RETAILERS</button>
@@ -32,14 +33,18 @@
                 {
                     ?>
                     <div class="card">
+                    <div class="card-image">
+                    <img src="http://localhost/H20/images/retail.jpg" alt="Image Description">
+                    </div>
                     <?php
                     $name = $rows['shopname'];
                     $phno = $rows['retailer_phno'];
+                    $email = $rows['retailer_email'];
                     ?>
                     <h2><?php echo $name ?></h2>
                     <p><?php echo $phno ?></p>
-                    <button>BOOK NOW</button>
-                    <button>REVIEW</button>
+                    <button class="button">BOOK NOW</button>
+                    <a href="http://localhost/H20/user/feedback.php?mailid=<?php echo $email ?>"><button class="button">FEEDBACK</button></a>
                     </div>
                     <?php              
                 }
@@ -57,21 +62,22 @@
                 {
                     ?>
                     <div class="card">
+                    <div class="card-image"></div>
                     <?php
                     $name = $rows['non_retailer_name'];
                     $phno = $rows['non_retailer_phno'];
+                    $email = $rows['non_retailer_email'];
                     ?>
                     <h2><?php echo $name ?></h2>
                     <p><?php echo $phno ?></p>
-                    <button>BOOK NOW</button>
-                    <button>REVIEW</button>
+                    <button class="button">BOOK NOW</button>
+                    <a href="http://localhost/H20/user/feedback.php?mailid=<?php echo $email ?>"><button>FEEDBACK</button></a>
                     </div>
                     <?php              
                 }
             }
         ?>
     </div>
-  </div>
 </div>
 <script src="user_dashboard_script.js"></script>
 </body>

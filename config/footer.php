@@ -10,11 +10,12 @@
         }
         footer {
             background-color:#333 ;
-            padding: 5px;
+            padding: -4px;
             position: fixed;
             bottom: 0;
             width: 100%;
             text-align: center;
+            color:white;
         }
     </style>
 </head>
