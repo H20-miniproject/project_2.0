@@ -86,7 +86,7 @@
   height: 100px;
 }
 
-.form button {
+.button {
   background-color: #3366cc;
   color: #fff;
   border: none;
@@ -97,7 +97,7 @@
   transition: all 0.3s ease;
 }
 
-.form button:hover {
+.button:hover {
   background-color: #27408b;
 }
 
@@ -107,20 +107,12 @@
   padding: 0;">
 <div class="card">
   <span class="title">Leave a Review</span>
-  <form class="form">
-    <div class="group">
-    <input placeholder="" type="text" required="">
-    <label for="name">Name</label>
-    </div>
+  <form class="form" method="POST" action="">
 <div class="group">
-    <input placeholder="" type="email" id="email" name="email" required="">
-    <label for="email">Email</label>
-    </div>
-<div class="group">
-    <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+    <textarea placeholder="" id="comment" name="feedback" rows="5" required=""></textarea>
     <label for="comment">Your Review please</label>
 </div>
-    <button type="submit">Submit</button>
+    <input class="button" type="submit" name="submit">
   </form>
 </div>
 
@@ -132,11 +124,15 @@
 			{
 				echo "<script>alert('data inserted successfully')</script>";
 			}
+      else
+		  {
+			  echo "<script>alert('something went wrong')</script>";
+		  }
 		}
-		else
-		{
-			echo "<script>alert('something went wrong')</script>";
-		}
+    else
+    {
+      echo "<script>alert('value not available')</script>";
+    }
 	?>
 </body>
 </html>
