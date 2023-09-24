@@ -2,8 +2,9 @@
     include("../config/user_header.php");
     include("../config/constants.php");
 	$user_mailid = $_SESSION['user_mailid'];
-	if(isset($_GET['mailid'])){
+	if(isset($_GET['mailid'])&& isset($_GET['type'])){
 		$supplier_mailid = $_GET['mailid'];
+    $type = $_GET['type'];
 	}
 ?>
 <!DOCTYPE html>
@@ -86,7 +87,7 @@
   height: 100px;
 }
 
-.form button {
+.button {
   background-color: #3366cc;
   color: #fff;
   border: none;
@@ -97,7 +98,7 @@
   transition: all 0.3s ease;
 }
 
-.form button:hover {
+.button:hover {
   background-color: #27408b;
 }
 
@@ -107,20 +108,12 @@
   padding: 0;">
 <div class="card">
   <span class="title">Leave a Review</span>
-  <form class="form">
-    <div class="group">
-    <input placeholder="" type="text" required="">
-    <label for="name">Name</label>
-    </div>
+  <form class="form" method="POST" action="">
 <div class="group">
-    <input placeholder="" type="email" id="email" name="email" required="">
-    <label for="email">Email</label>
-    </div>
-<div class="group">
-    <textarea placeholder="" id="comment" name="comment" rows="5" required=""></textarea>
+    <textarea placeholder="" id="comment" name="feedback" rows="5" required=""></textarea>
     <label for="comment">Your Review please</label>
 </div>
-    <button type="submit">Submit</button>
+    <input class="button" type="submit" name="submit">
   </form>
 </div>
 
@@ -128,15 +121,19 @@
 		if(isset($_POST['submit']))
 		{
 			$feedback = $_POST['feedback'];
-			if($conn->query("INSERT INTO feedback(`user_mailid`, `feedback`, `supplier`) VALUES ('$user_mailid','$feedback','$supplier_mailid')") == True)
+			if($conn->query("INSERT INTO feedback(`user_mailid`, `feedback`, `supplier`,seller_type) VALUES ('$user_mailid','$feedback','$supplier_mailid','$type')") == True)
 			{
 				echo "<script>alert('data inserted successfully')</script>";
 			}
+      else
+		  {
+			  echo "<script>alert('something went wrong')</script>";
+		  }
 		}
-		else
-		{
-			echo "<script>alert('something went wrong')</script>";
-		}
+    else
+    {
+      echo "<script>alert('value not available')</script>";
+    }
 	?>
 </body>
 </html>

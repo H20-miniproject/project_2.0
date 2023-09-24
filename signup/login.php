@@ -37,11 +37,14 @@
 				<table>
 					<tr>
 						<td ><a href="#" class="forgot-password">Forgot Password?</a></td>
-						<td style="padding-left: 87px;"><a href="signup.html" class="forgot-password">New user, Register?</a></td>
+						<td style="padding-left: 87px;"><a href="signup.php" class="forgot-password">New user, Register?</a></td>
 					</tr>
 				</table>
 			</div>
 		</div>
+		<button>
+    Admin sigin
+</button>
 	</div>
 	<?php
 		 $conn = new mysqli('localhost','root','','h2o_watersupply');
@@ -71,6 +74,7 @@
 
 							if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								$_SESSION["user_name"] = $name; // Store the name in a session variable
+								$_SESSION['mailid'] = $mailid; 
 								header("Location: http://localhost/H20/user/user_dashboard.php"); // Redirect to page2.php
 								exit();
 							}
@@ -90,38 +94,59 @@
 				}
 				if($_POST['choice']=="retailer")
 				{
-					$data = $conn->query("SELECT retailer_password FROM retailer_table WHERE retailer_email = '$mailid';");
+					$data = $conn->query("SELECT retailer_password,shopname FROM retailer_table WHERE retailer_email = '$mailid';");
 					if($data->num_rows>0)
 					{
-						$pass =  $data->fetch_assoc()['retailer_password'];
-						if($pass == $password)
+						while($result=$data->fetch_assoc())
 						{
-							echo "<script>alert('Successfully logged in')</script>";
+							$pass = $result['retailer_password'];
+							$name = $result['shopname'];
+							if($pass == $password)
+						{
+							if ($_SERVER["REQUEST_METHOD"] == "POST") {
+								$_SESSION["supplier_name"] = $name;
+								$_SESSION['mailid'] = $mailid; // Store the name in a session variable
+								header("Location: http://localhost/H20/retailers/retailer_dashboard.php"); // Redirect to page2.php
+								exit();
+							}
 						}
 						else
 						{
 							$_SESSION['msg'] = "Incorrect password";
+							header("Location: http://localhost/H20/signup/login.php"); // Redirect to page2.php
 						}
 					}
+				}
 					else
 					{
 						$_SESSION['msg'] = "Mail id not registered";
+						header("Location: http://localhost/H20/signup/login.php"); // Redirect to page2.php
 					}
 				}
 				if($_POST['choice']=="non_retailer")
 				{
-					$data = $conn->query("SELECT non_retailer_password FROM non_retailers_table WHERE non_retailer_email = '$mailid';");
+					$data = $conn->query("SELECT non_retailer_name,non_retailer_password FROM non_retailers_table WHERE non_retailer_email = '$mailid';");
 					if($data->num_rows>0)
 					{
-						$pass =  $data->fetch_assoc()['non_retailer_password'];
-						if($pass == $password)
+						while($result=$data->fetch_assoc())
 						{
-							echo "<script>alert('Successfully logged in')</script>";
+							$pass = $result['non_retailer_password'];
+							$name = $result['non_retailer_name'];
+							if($pass == $password)
+						{
+							if ($_SERVER["REQUEST_METHOD"] == "POST") {
+								$_SESSION["supplier_name"] = $name;
+								$_SESSION['mailid'] = $mailid; // Store the name in a session variable
+								header("Location: http://localhost/H20/non-retailer/non_retailer_dashboard.php"); // Redirect to page2.php
+								exit();
+							}
 						}
 						else
 						{
 							$_SESSION['msg'] = "Incorrect password";
+							header("Location: http://localhost/H20/signup/login.php"); // Redirect to page2.php
 						}
+					}
 					}
 					else
 					{

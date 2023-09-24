@@ -188,50 +188,43 @@ button {
   }
 
   .card {
-    width: 300px;
-    background-color: #add9ff;
-    border-radius: 10px;
     padding: 20px;
-    height: 200px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .card h3 {
-    margin-top: 0;
-  }
-
-  .card p {
-    margin-bottom: 0;
-    font-weight: bold;
-  }
-  .card {
-    width: 300px;
-    position:relative;
-    background-color: #add9ff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  .card button{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    padding-left: 50px;
-    margin-bottom: 20px;
-  }
+    width: 330px;
+    min-height: 370px;
+    border-radius: 20px;
+    background: #e8e8e8;
+    box-shadow: 5px 5px 6px #dadada,
+                 -5px -5px 6px #f6f6f6;
+    transition: 0.4s;
+  align-items: center; /* Center contents horizontally */
+}
+  
   .card:hover {
-    transform: scale(1.05);
+    translate: 0 -10px;
   }
-  .card-container a {
-    text-decoration: none;
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2e54a7;
+    margin: 15px 0 0 10px;
   }
+  
+  .card-image {
+    min-height: 170px;
+    background-color: #c9c9c9;
+    border-radius: 15px;
+    box-shadow: inset 8px 8px 10px #c3c3c3,
+              inset -8px -8px 10px #cfcfcf;
+  }
+  
+  .card-body {
+    margin: 13px 0 0 10px;
+    color: rgb(31, 31, 31);
+    font-size: 15px;
+  }
+  
+  
   .card-container a {
     text-decoration: none;
     color: #333; /* Change this color to your preferred color */
@@ -258,6 +251,9 @@ button {
   50% {
     transform: translateY(-20px); /* Move the image up by 20px at 50% of the animation */
   }
+}
+.btn{
+  align-items: center;
 }
 
   

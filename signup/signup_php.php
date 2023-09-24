@@ -116,8 +116,8 @@
                 $district_id = $row['d_id'];
             }
 
-                $sql_query = "INSERT INTO retailer_table(shopname,ownername,licenseno,retailer_phno,retailer_address,retailer_email,retailer_password,retailer_place,retailer_zipcode,retailer_district_id)
-                VALUES('$shopname','$ownername','$licensenumber','$retailer_phonenumber','$retailer_address','$retailer_email','$retailer_password','$retailer_place','$retailer_zip','$district_id');";
+                $sql_query = "INSERT INTO retailer_table(`shopname`, `ownername`, `licenseno`, `retailer_phno`, `retailer_address`, `retailer_email`, `retailer_password`, `retailer_place`, `retailer_zipcode`, `retailer_district_id`, `availability`)
+                VALUES('$shopname','$ownername','$licensenumber','$retailer_phonenumber','$retailer_address','$retailer_email','$retailer_password','$retailer_place','$retailer_zip','$district_id','available');";
 
                 if($conn->query($sql_query)==True)
                 {
@@ -150,8 +150,8 @@
                 $district_id = $row['d_id'];
             }
 
-                $sql_query = "INSERT INTO non_retailers_table(non_retailer_name,non_retailer_email,non_retailer_phno,non_retailer_password,non_retailer_place,non_retailer_zipcode,non_retailer_district_id)
-                          VALUES('$nonretailername','$nonretaileremail','$nonretailerphno','$nonretailerpassword','$nonretailerplace','$nonretailerzipcode','$district_id');";
+                $sql_query = "INSERT INTO non_retailers_table(non_retailer_name,non_retailer_email,non_retailer_phno,non_retailer_password,non_retailer_place,non_retailer_zipcode,non_retailer_district_id,`availability`)
+                          VALUES('$nonretailername','$nonretaileremail','$nonretailerphno','$nonretailerpassword','$nonretailerplace','$nonretailerzipcode','$district_id','available');";
 
                 if($conn->query($sql_query)==True)
                 {

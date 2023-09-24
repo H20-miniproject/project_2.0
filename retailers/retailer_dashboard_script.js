@@ -11,9 +11,3 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.classList.add("active");
 }
-
-function openBookingPopup() {
-  // Add the overlay class to the body
-  document.body.classList.add('overlay');
-  document.getElementById('booking-popup').style.display = 'block'; // Open the popup
-}

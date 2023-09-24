@@ -229,7 +229,7 @@ function retailer_checkpassword()
           show_retailer_error();
         }
   }
-  else if (pass1.length < 6 || pass2.length < 6)
+  else if (pass1.length < 6 && pass2.length < 6)
   {
     if(!("password should have 6+ characters" in error_msg))
         {
@@ -289,7 +289,7 @@ function non_retailer_checkemail()
           if (indexToRemove !== -1) {
             error_msg.splice(indexToRemove, 1);
           }
-          show_retailer_error();
+          show_non_retailer_error();
         }
       }
     });
@@ -340,7 +340,7 @@ function non_retailer_checkphonenumber()
       }
     }
   //Function for password validation
-function retailer_checkpassword()
+function non_retailer_checkpassword()
 {
   var pass1 = document.getElementsByName('pass1')[2].value;
   var pass2 = document.getElementsByName('pass2')[2].value;

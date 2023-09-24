@@ -13,8 +13,8 @@ body {
 }
 
 .card {
-  width: 25%;
-  background: rgb(255, 255, 255);
+  width: 190px;
+  background: white;
   padding: .4em;
   border-radius: 6px;
   margin: 10px;
@@ -74,6 +74,7 @@ body {
   .tab-content.active {
     display: block;
   }
+  
   /* Style the BOOK NOW and FEEDBACK buttons */
 .button {
   padding: 10px;
@@ -100,35 +101,42 @@ body {
 .button-feedback:hover {
   background-color: #c0392b; /* Change background color on hover */
 }
-/* styles.css */
-/* CSS for the overlay */
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  z-index: 1; /* Ensure it's on top of other elements */
-  overflow: hidden;
+/* Style the feedback card */
+.feedback-card {
+  width: 279px;
+  padding: 13px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  text-align: center;
+  transition: transform 0.2s;
 }
 
-/* CSS for the modal (the card) */
-.modal {
-  background-color: #fff;
-  width: 80%;
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 10px;
+/* Style the name */
+.feedback-card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0; /* Remove margin to avoid extra space */
+  text-align: left; 
+}
+
+/* Style the feedback */
+.feedback-card p {
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: left; 
+}
+.feedback-card:hover {
+  transform: scale(1.02); /* Scale the card slightly on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Adjust box shadow on hover */
+}
+.feedback-card .iconn {
   position: relative;
-  z-index: 2; /* Place it above the overlay */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.button.disabled {
-  opacity: 0.5; /* Adjust the opacity value as needed */
-  pointer-events: none; /* Disable pointer events to prevent interactions */
-  transition: opacity 0.3s ease; /* Apply a smooth transition */
+  top: 13px;
+  left: 91px;
+  width: 52px;
+  height: 52px;
+  border-radius: 80%;
+  border: 2px solid #3498db;
 }

@@ -8,7 +8,6 @@ $result = $conn->query($query);
 if ($result) {
     while ($row = $result->fetch_assoc()) {
         echo '<option value="' . $row['district_name'] . '">' . $row['district_name'] . '</option>';
-        echo "<script>'hello'</script>";
 }
     }
  else {

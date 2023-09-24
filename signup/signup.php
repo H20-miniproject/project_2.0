@@ -161,7 +161,7 @@
                   <input class="field" type="password" placeholder="password" name="pass1">
                 </td>
                 <td>
-                  <input class="field" type="password" placeholder="confirm password" name="pass2" onfocusout="retailer_checkpassword()">
+                  <input class="field" type="password" placeholder="confirm password" name="pass2" onfocusout="non_retailer_checkpassword()">
                 </td>
               </tr>
               <tr>
