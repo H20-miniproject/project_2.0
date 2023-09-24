@@ -67,7 +67,7 @@
 <!-- Card 3 -->
 <div class="dashboard-card">
     <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Booking Management</h2>
-	<a href=""><button class="btn">CHECK</button></a>
+	<a href="http://localhost/H20/admin/booking_management.php"><button class="btn">CHECK</button></a>
 </div>
 <!-- Card 4 -->
 <div class="dashboard-card">
