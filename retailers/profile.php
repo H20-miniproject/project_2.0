@@ -234,7 +234,7 @@ if(isset($_POST['submit']))
                             <td><b><?php echo $data['service'] ?></b></button></a></td>
                             <td>AMOUNT :</td>
                             <td><b><?php echo $data['amount'] ?></b></td>
-                            <td><b><a href="http://localhost/H20/retailers/item_delete.php?id=<?php echo $id ?>"><button class="delete-btn">DELETE ITEM</button></a></td>
+                            <td><b><a href="http://localhost/H20/retailers/item_del.php?id=<?php echo $id ?>"><button class="delete-btn">DELETE ITEM</button></a></td>
                         </tr>
                     <?php
                 }
@@ -261,10 +261,6 @@ if(isset($_POST['submit']))
         <tr>
             <td>Price per item :</td>
             <td><input type="number" name="amt" required></td>
-        </tr>
-        <tr>
-            <td>Upload Profile Picture:</td>
-            <td><input type="file" id="profile-picture" name="profile-picture"></td>
         </tr>
         <tr >
             <td colspan="2"><input class="update-button" type="submit" value="Update" name="submit"></form><a href="http://localhost/H20/retailers/account_delete.php?mailid=<?php echo $mailid ?>"><button class="delete-button">Delete Account</button></a></td>

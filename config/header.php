@@ -6,14 +6,44 @@
     <title>Your Page Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style> 
+    body{
+        margin:0;
+        font-family: 'Montserrat', sans-serif;
+    }
         header {
             background-color: #333;
-            padding: 10px;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
         header h1, header p {
             color: white;
         }
+        /* Style for the logout icon */
+/* Style for the logout icon */
+.logout a i {
+    color: red; /* Default color */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Style for the logout text */
+.logout a {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    color: red; /* Default color */
+}
+
+/* Add a hover animation for the icon */
+.logout a:hover i {
+    transform: rotate(180deg);
+}
+
+/* Change color when clicked */
+.logout.clicked a {
+    color: red; /* Color when clicked */
+}
+
+
 
     </style>
 </head>
@@ -29,11 +59,15 @@
 ?>
 <body>
 <header>
-<header>
     <h1>Welcome <?php echo $userName; ?></h1>
-</header>
+    <div class="logout">
+    <a href="../admin/admin_logout.php">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+</div>
 
 </header>
+
 
 </body>
 </html>

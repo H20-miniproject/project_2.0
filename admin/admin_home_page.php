@@ -72,13 +72,10 @@
 <!-- Card 4 -->
 <div class="dashboard-card">
     <h2 class="card-title"><i class="fas fa-money-check"></i> Payment Monitoring</h2>
-	<a href=""><button class="btn">CHECK</button></a>
+	<a href="http://localhost/H20/admin/payment_management.php"><button class="btn">CHECK</button></a>
 </div>
 </div>
 
 
 </body>
 </html>
-<?php
-	include("../config/footer.php");
-?>

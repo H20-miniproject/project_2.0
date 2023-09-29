@@ -130,10 +130,6 @@
 			  echo "<script>alert('something went wrong')</script>";
 		  }
 		}
-    else
-    {
-      echo "<script>alert('value not available')</script>";
-    }
 	?>
 </body>
 </html>

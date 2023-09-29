@@ -36,12 +36,13 @@
                     ?>
                     <div class="card">
                         <div class="card-image">
-                            <img src="http://localhost/H20/images/retail.jpg" alt="Image Description">
+                            <img src="http://localhost/H20/images/istockphoto-912819604-612x612.jpg" alt="Image Description">
                         </div>
                         <?php
                         $name = $rows['shopname'];
                         $availability = $rows['availability'];
                         $type = "retailer";
+                        $_SESSION['type'] = $type;
                         ?>
                         <h2><?php echo $name ?></h2>
                         <h4><?php echo $availability ?></h4>
@@ -70,7 +71,9 @@
                     $cardId = "non-retailer-card-" . $email;
                     ?>
                     <div class="card">
-                        <div class="card-image"></div>
+                        <div class="card-image1">
+                        <img src="" alt="Image Description">
+                        </div>
                         <?php
                         $name = $rows['non_retailer_name'];
                         $availability = $rows['availability'];
@@ -78,9 +81,14 @@
                         ?>
                         <h2><?php echo $name ?></h2>
                         <h4><?php echo $availability ?></h4>
+                        <?php $_SESSION['type'] = $type; ?>
                         <!-- Add a data attribute with the card ID -->
-                        <button class="button book-now-button" data-card="<?php echo $cardId ?>">BOOK NOW</button>
-                        <a href="http://localhost/H20/user/feedback.php?mailid=<?php echo $email ?>&type=<?php echo $type ?>"><button>FEEDBACK</button></a>
+                        <?php if ($availability == 'available') { ?>
+                        <a href="http://localhost/H20/booking/order_summary_payment.php?mailid=<?php echo $email ?>&type=<?php echo $type ?>"><button class="button book-now-button">BOOK NOW</button></a>
+                        <?php } else { ?>
+                            <button class="button book-now-button disabled">BOOK NOW</button>
+                        <?php } ?>
+                        <a href="http://localhost/H20/user/feedback.php?mailid=<?php echo $email ?>&type=<?php echo $type ?>"><button class="button">FEEDBACK</button></a>
                     </div>
                     <?php
                 }

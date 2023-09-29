@@ -77,6 +77,7 @@
     if (isset($_SESSION["supplier_name"])&&isset($_SESSION["mailid"])) {
         $userName = $_SESSION["supplier_name"];
         $mailid = $_SESSION['mailid'];
+        $_SESSION['mailid'] = $mailid;
     } else {
         $userName = "Guest"; // Default value if session variable is not set
     }

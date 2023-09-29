@@ -38,6 +38,7 @@ body, h1, h2, h3, p, ul, li {
 	height: 150px;
     transition: transform 0.2s ease;
 	text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Add a simple scale animation on hover for the cards */
@@ -69,11 +70,13 @@ body, h1, h2, h3, p, ul, li {
     margin: 10px;
 	margin-left: 40px;
 	text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 /* Style the "Admin" card */
 .first_container .card:nth-child(1) {
     background-color: #3498db; /* Change this to your desired color */
     color: #fff; /* Text color for contrast */
+    
 }
 
 /* Style the "User" card */

@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H20</title>
   <link rel="stylesheet" type="text/css" href="homepage_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-7NIBs6TKl3Jd4z4k4lzc77V8Z+IOWJWrj5gIN6LJq2VJ7PJFh/B6h5fwB/KlKc1G" crossorigin="anonymous">
+
+  <!-- Add this line to your HTML head section to include Font Awesome -->
    <style>
     @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+  
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-7NIBs6TKl3Jd4z4k4lzc77V8Z+IOWJWrj5gIN6LJq2VJ7PJFh/B6h5fwB/KlKc1G" crossorigin="anonymous">
-</head>
+ </head>
 <body>
   <div class="navigation">
     <ul class="nav-links">
@@ -17,7 +20,6 @@
       <li><a href="#section2"><i class="fas fa-cogs"></i> Services</a></li>
       <li><a href="#section3"><i class="fas fa-info-circle"></i> About Us</a></li>
       <li><a href="#section4"><i class="fas fa-envelope"></i> Contact Us</a></li>
-      <li><a href="http://localhost/H20/admin/admin_login.php"><i class="fas fa-user"></i> Admin</a></li>
     </ul>
   </div>
   
@@ -27,14 +29,14 @@
             <div class="heading-contents">
                 <h2><span style="font-size: 90px;font-family: 'Russo One', sans-serif; letter-spacing: 1px;">H20</span><br><span style="font-size: 15px;">WATER FOR EVERYONE</span></h2>
                 <div class="btn-container">
-                  <a href="http://localhost/H20/signup/signup.php"><button>
+                  <a href="http://localhost/H20/signup/signup.php"><button class="button">
                     SIGN UP
                     <div class="arrow-wrapper">
                         <div class="arrow"></div>
                     </div>
                   </button></a>
                   <a href="https://getbootstrap.com/"></a>
-                  <a href="http://localhost/H20/signup/login.php"><button>
+                  <a href="http://localhost/H20/signup/login.php"><button class="button">
                     SIGN IN
                     <div class="arrow-wrapper">
                         <div class="arrow"></div>
@@ -56,16 +58,17 @@
         <h2>Services</h2>
         <div class="card-container">
           <div class="card">
-            <div class="card-image"></div>
+            <div class="card-image">
+            </div>
             <p class="card-title">Retail</p>
-            <p>You can book various water services offered from various retail sectors.</p>
-            <a href="http://localhost/H20/signup/login.php" ><button class="btn">BOOK NOW</button></a>
+            <p>Experience convenience like never before with our retail water service. Secure a quick and hassle-free booking for your water needs from a diverse range of trusted retailers.</p>
+            <a href="http://localhost/H20/signup/login.php" ><button class="btn-section2">BOOK NOW</button></a>
           </div>
           <div class="card">
-            <div class="card-image"></div>
-            <p class="card-title">Retail</p>
+            <div class="card-image1"></div>
+            <p class="card-title">Non-Retail</p>
             <p>This is a new initiative where you can book for a temporary water connection from your neighbouring water service providers</p>
-            <a href="http://localhost/H20/signup/login.php"><button class="btn">BOOK NOW</button></a>
+            <a href="http://localhost/H20/signup/login.php"><button class="btn-section2">BOOK NOW</button></a>
           </div>
           <!-- Add more cards as needed -->
         </div>
@@ -76,13 +79,30 @@
     </section>
  
   <section id="section3">
-    <h2>Section 3</h2>
-    <p>This is the third section of my webpage.</p>
+    <div>
+      <img src="http://localhost/H20/images/about_us-removebg-preview.png" class="aboutus">
+    </div>
+    <h2>About Us</h2>
+    <p>Welcome to H2O  Water for everyone! We are dedicated to providing accessible and reliable water supply solutions for all your needs.</p>
+    <p>Our mission is to make water booking convenient and efficient. Whether you require drinking water or a temporary water connection from your neighboring providers, we've got you covered.</p>
+    <p>Explore our services and experience the future of water supply management.</p>
   </section>
 
   <section id="section4">
-    <h2>Section 4</h2>
-    <p>This is the fourth section of my webpage.</p>
+    <div class="footer-container">
+      <div>
+        <img src="http://localhost/H20/images/contactus.png" class="Contactus">
+      </div>
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+        <ul class="contact-icons">
+          <li><i class="fas fa-envelope"></i> Email: contact@h2o.com</li>
+          <li><i class="fas fa-phone"></i> Phone: 9847991043 , 9447187403</li>
+          <li><i class="fas fa-map-marker-alt"></i> Address: 123 Water Street, Cityville, State</li>
+        </ul>
+      </div>
+          </div>
   </section>
 </body>
 </html>

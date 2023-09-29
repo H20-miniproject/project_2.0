@@ -95,7 +95,7 @@ body {
                 transform: translateY(0);
             }
         }
-button {
+.button {
     --primary-color: #ffffff;
     --secondary-color: #000000;
     --hover-color: #ffffff;
@@ -117,18 +117,18 @@ button {
     font-weight: bold;
     text-decoration: none;
   }
-  button a{
+  .button a{
     text-decoration: none;
     color: #000000;
   }
   
-  button .arrow-wrapper {
+ .button .arrow-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  button .arrow {
+  .button .arrow {
     margin-top: 1px;
     width: var(--arrow-width);
     background: var(--primary-color);
@@ -137,7 +137,7 @@ button {
     transition: 0.2s;
   }
   
-  button .arrow::before {
+  .button .arrow::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
@@ -151,15 +151,15 @@ button {
     transform: rotate(-45deg);
   }
   
-  button:hover {
+  .button:hover {
     background-color: var(--hover-color);
   }
   
-  button:hover .arrow {
+  .button:hover .arrow {
     background: var(--secondary-color);
   }
   
-  button:hover .arrow:before {
+  .button:hover .arrow:before {
     right: 0;
   }
   #section2 {
@@ -175,6 +175,38 @@ button {
     text-align: center;
 
 }
+#section2 h2 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Style for buttons in Section 2 */
+.btn-section2 {
+  --primary-color: #ffffff;
+  --secondary-color: #000000;
+  --hover-color: #ffffff;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  width: 175px;
+  margin-top: 20px;
+  margin-left: 63px;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1em 1.8em;
+  background: var(--primary-color);
+  display: flex;
+  padding-left: 55px;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+
 
   .card-container {
     display: flex;
@@ -211,11 +243,20 @@ button {
   }
   
   .card-image {
-    min-height: 170px;
-    background-color: #c9c9c9;
+    height: 170px;
+    background-image: url("http://localhost/H20/images/Retail%20Services.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 15px;
-    box-shadow: inset 8px 8px 10px #c3c3c3,
-              inset -8px -8px 10px #cfcfcf;
+  }
+  .card-image1{
+    height: 170px;
+    background-image: url("http://localhost/H20/images/NOn-Retail%20Services.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 15px;
   }
   
   .card-body {
@@ -255,6 +296,94 @@ button {
 .btn{
   align-items: center;
 }
+#section3 {
+  background-color: 
+  #f1effd;
+  color: #000000; /* Text color for Section 3 content */
+  padding: 100px; /* Adjust the padding as needed */
+  text-align: center; /* Center align the content */
+}
+   /* Additional CSS styles for Section 3 content */
+   #section3 h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+  }
 
-  
-  
+  #section3 p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .aboutus{
+    float: left;
+    margin-left: -53px;
+    margin-top: 0px;
+    height: 399px;
+    animation: moveUpDown 2s ease infinite;
+  }
+  @keyframes moveUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  /* Add this code to your CSS */
+#section4 {
+  background-color:#ddecff;  /* Change the background color as needed */
+  color: #000000; /* Text color for Section 4 content */
+  padding: 100px; /* Adjust the padding as needed */
+  text-align: center; /* Center align the content */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-info {
+  text-align: left;
+  max-width: 600px;
+}
+
+.contact-info h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.contact-info p{
+  font-size: 28px;
+  margin-bottom: px;
+}
+
+.contact-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-icons li {
+  margin-bottom: 10px;
+}
+
+.contact-icons i {
+  margin-right: 10px;
+  color: #2e54a7; /* Icon color */
+  font-size: 18px;
+}
+.Contactus{
+  float: right;
+    margin-left: -53px;
+    margin-top: 0px;
+    height: 399px;
+    animation: moveUpDown 2s ease infinite
+}
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

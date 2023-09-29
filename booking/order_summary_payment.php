@@ -2,13 +2,14 @@
 session_start();
 include("../config/constants.php");
 $user_mailid = $_SESSION['user_mailid'];
-if(isset($_GET['mailid']) && isset($_GET['type']))
+if(isset($_GET['mailid']))
 {
     $mailid = $_GET['mailid'];
-    $type = $_GET['type'];
     $_SESSION['retailer_mailid'] = $mailid;
-    $_SESSION['type'] = $type;
-}        
+}  
+$type = $_SESSION['type'];     
+$_SESSION['type'] = $type; 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,11 +94,23 @@ if(isset($_GET['mailid']) && isset($_GET['type']))
             {
                 $user_data = $user_base_data->fetch_assoc();
             }
-            $retailer_mail = $_SESSION['retailer_mailid'];
-            $retailer_base_data = $conn->query("SELECT * FROM retailer_table WHERE retailer_email = '$retailer_mail'");
-            if($retailer_base_data->num_rows > 0)
+            if($type == "retailer")
             {
-                $retailer_data = $retailer_base_data->fetch_assoc();
+                $retailer_mail = $_SESSION['retailer_mailid'];
+                $retailer_base_data = $conn->query("SELECT * FROM retailer_table WHERE retailer_email = '$retailer_mail'");
+                if($retailer_base_data->num_rows > 0)
+                {
+                    $retailer_data = $retailer_base_data->fetch_assoc();
+                }
+            }
+            else
+            {
+                $retailer_mail = $_SESSION['retailer_mailid'];
+                $non_retailer_base_data = $conn->query("SELECT * FROM non_retailers_table WHERE non_retailer_email = '$retailer_mail'");
+                if($non_retailer_base_data->num_rows > 0)
+                {
+                    $non_retailer_data = $non_retailer_base_data->fetch_assoc();
+                }
             }
         ?>
         <table class="usertable">
@@ -117,12 +130,25 @@ if(isset($_GET['mailid']) && isset($_GET['type']))
                 <td>Place:</td>
                 <td><?php echo $user_data['user_place'] ?></td>
             </tr>
+            <?php
+                if($type=="non-retailer")
+                {
+                    ?>
+                        <tr>
+                            <td>Amount:</td>
+                            <td><?php echo $non_retailer_data['amount'] ?></td>
+                            <?php
+                                $totalAmount = $non_retailer_data['amount'];
+                            ?>
+                        </tr>
+                    <?php
+                }
+            ?>
         </table>
         <table class="datatable">
             <?php
-                $totalAmount = 0;
                 if (isset($_POST["confirmButton"])) {
-
+                    $totalAmount = 0;
                     $date = $_POST['date'];
                     
                     $orders = $_POST["dropdown"]; // An array of selected services
@@ -153,6 +179,7 @@ if(isset($_GET['mailid']) && isset($_GET['type']))
                         // Perform calculations or store data as needed
                         // For example, you can calculate the total amount for each item here
                         $totalAmount = $totalAmount + ($quantity * $amount); // Assuming you have the amount associated with the service
+                        $_SESSION['total'] = $totalAmount;
                 
                         // You can now use $selectedService, $quantity, and $totalAmount as needed
                         // For example, you can insert this data into a database or display it on the page
@@ -169,7 +196,15 @@ if(isset($_GET['mailid']) && isset($_GET['type']))
                 }
             ?>
         </table>
-        <p class="total">Total : <?php echo $totalAmount ?></p>
+        <?php
+            if(isset($totalAmount))
+            {
+                ?>
+                <p class="total">Total : <?php echo $totalAmount ?></p>
+                <?php
+                $_SESSION['total'] = $totalAmount;
+            }
+         ?>
         <div class="button-container">
             <a href = "http://localhost/H20/booking/booking.php"><button class="button cancel-button">Cancel Order</button></a>
             <form action="" method="POST"><input class="button confirm-button" value="Confirm & Pay" type="submit" name="book"></form>
@@ -178,39 +213,63 @@ if(isset($_GET['mailid']) && isset($_GET['type']))
     <?php
     if(isset($_POST['book']))
     {
-        $name = $user_data['user_name'];
-        $mailid = $user_data['user_email'];
-        $phno = $user_data['user_phno'];
-        $place = $user_data['user_place'];
-        $supplier_mailid = $_SESSION['retailer_mailid'];
-        $type = $_SESSION['type'];
-        $date = $_SESSION['date'];
-        $total = $_SESSION['total'];
-        $orders = $_SESSION['orders'];
-        $quantities = $_SESSION['quantities'];
-        if($data = $conn->query("INSERT INTO `booking`(`user_name`, `user_mail`, `user_phno`, `user_place`, `date_value`, `supplier_mail`, `type`, `total`) VALUES ('$name','$mailid','$phno','$place','$date','$supplier_mailid','$type','$total')")==True)
+        if($type == "retailer")
         {
-            $last_inserted_id = $conn->insert_id;
-            for ($i = 0; $i < count($orders); $i++) {
-                $order = $orders[$i];
-                $order_data = explode(",",$order);
-                $amount = intval($order_data[0]);
-                $service = $order_data[1];
-                $quantity = $quantities[$i];
+            $name = $user_data['user_name'];
+                $mailid = $user_data['user_email'];
+                $phno = $user_data['user_phno'];
+                $place = $user_data['user_place'];
+                $supplier_mailid = $_SESSION['retailer_mailid'];
+                $type = $_SESSION['type'];
+                $date = $_SESSION['date'];
+                $total = $_SESSION['total'];
+                $orders = $_SESSION['orders'];
+                $quantities = $_SESSION['quantities'];
+                if($data = $conn->query("INSERT INTO `booking`(`user_name`, `user_email`, `user_phone`, `user_place`, `supplier_mail`, `type`, `total`, `date`,payment) VALUES ('$name','$mailid','$phno','$place','$supplier_mailid','$type','$total','$date','un-paid')")==True)
+                {
+                    $last_inserted_id = $conn->insert_id;
+                    for ($i = 0; $i < count($orders); $i++) {
+                        $order = $orders[$i];
+                        $order_data = explode(",",$order);
+                        $amount = intval($order_data[0]);
+                        $service = $order_data[1];
+                        $quantity = $quantities[$i];
 
-                $sql = "SELECT id FROM booking WHERE id = $last_inserted_id";
-                $result = $conn->query($sql);
-                $booking_id =  $result->fetch_assoc()['id'];
-                if($data = $conn->query("INSERT INTO `booked_service` (`service`, `quantity`, `id`) VALUES ('$service', '$quantity', '$booking_id')")==True)
-                {
-                    continue;
+                        $sql = "SELECT id FROM booking WHERE id = $last_inserted_id";
+                        $result = $conn->query($sql);
+                        $booking_id =  $result->fetch_assoc()['id'];
+                        if($data = $conn->query("INSERT INTO `booked_service` (`service`, `quantity`, `id`) VALUES ('$service', '$quantity', '$booking_id')")==True)
+                        {
+                            $_SESSION['user_email'] = $mailid;
+                            $_SESSION['user_name'] = $name;
+                            $_SESSION['billid'] = $last_inserted_id;
+                            header("Location: http://localhost/H20/payment/payment.php");
+                        }
+                        else
+                        {
+                            echo "something wrong";
+                        }
                 }
-                else
-                {
-                    echo "something wrong";
-                }
+            }
         }
-    }
+        else
+        {
+            $name = $user_data['user_name'];
+            $mailid = $user_data['user_email'];
+            $phno = $user_data['user_phno'];
+            $place = $user_data['user_place'];
+            $supplier_mailid = $_SESSION['retailer_mailid'];
+            $date = date("Y-m-d");
+            $total = $_SESSION['total'];
+            if($data = $conn->query("INSERT INTO `booking`(`user_name`, `user_email`, `user_phone`, `user_place`, `supplier_mail`, `type`, `total`, `date`, payment) VALUES ('$name','$mailid','$phno','$place','$supplier_mailid','$type','$total','$date','un-paid')")==True)
+            {
+                $last_inserted_id = $conn->insert_id;
+                $_SESSION['user_email'] = $mailid;
+                $_SESSION['user_name'] = $name;
+                $_SESSION['billid'] = $last_inserted_id;
+                header("Location: http://localhost/H20/payment/payment.php");
+            }
+        }
 }
     ?>
 </body>

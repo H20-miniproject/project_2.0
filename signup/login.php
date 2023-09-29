@@ -36,15 +36,12 @@
 				</form>
 				<table>
 					<tr>
-						<td ><a href="#" class="forgot-password">Forgot Password?</a></td>
+						<td ><a href="http://localhost/H20/admin/admin_login.php" class="forgot-password">Admin Sigin</a></td>
 						<td style="padding-left: 87px;"><a href="signup.php" class="forgot-password">New user, Register?</a></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<button>
-    Admin sigin
-</button>
 	</div>
 	<?php
 		 $conn = new mysqli('localhost','root','','h2o_watersupply');

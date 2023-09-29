@@ -38,6 +38,8 @@
     padding-right: 20px;
     width: 100%;
     margin: 20px;
+    margin-bottom: -27px;
+    position: fixed;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 

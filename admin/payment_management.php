@@ -28,9 +28,8 @@
                 <tr>
                     <th>User Name</th>
                     <th>User Mail</th>
-                    <th>Supplier Mail</th>
-                    <th>Supplier Type</th>
-                    <th>Total Amount</th>
+                    <th>Address</th>
+                    <th>Card Number</th>
                 </tr>
                 <?php
                     $conn = new mysqli('localhost','root','','h2o_watersupply');
@@ -40,18 +39,17 @@
                     }
                     else
                     {
-                        $data = $conn->query("SELECT * FROM booking");
+                        $data = $conn->query("SELECT * FROM billing_data");
                         if($data->num_rows > 0)
                         {
                             while($rows = $data->fetch_assoc())
                             {
                                 ?>
                                 <tr>
-                                        <td><?php echo $rows['user_name'] ?></td>
-                                        <td><?php echo $rows['user_email'] ?></td>
-                                        <td><?php echo $rows['supplier_mail'] ?></td>
-                                        <td><?php echo $rows['type'] ?></td>
-                                        <td><?php echo "Rs.".$rows['total'] ?></td>
+                                        <td><?php echo $rows['fullname'] ?></td>
+                                        <td><?php echo $rows['bill_email'] ?></td>
+                                        <td><?php echo $rows['bill_address'] ?></td>
+                                        <td><?php echo $rows['card_number'] ?></td>
                                 </tr>
                                 <?php
                             }

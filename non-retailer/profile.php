@@ -133,6 +133,10 @@ if (isset($_SERVER["HTTP_REFERER"])) {
                     <td colspan="2">PLACE :</td>
                     <td colspan="3"><b><?php echo $data['non_retailer_place'] ?></b></td>
                 </tr>
+                <tr>
+                    <td colspan="2">AMOUNT :</td>
+                    <td colspan="3"><b><?php echo $data['amount'] ?></b></td>
+                </tr>
                 <?php
             }
         ?>
@@ -143,7 +147,15 @@ if (isset($_SERVER["HTTP_REFERER"])) {
         <table>
             <form action="availability_update_non_retailer.php" method="POST">
         <tr>
-            <td colspan="2"><input type="radio" name="availability" value="available"> Available&nbsp&nbsp&nbsp<input type="radio" name="availability" value="non-available"> Non-Available&nbsp&nbsp<input class="update-button" type="submit" name="availability_check" value="update"></td>
+            <td colspan="2"><input type="radio" name="availability" value="available"> Available&nbsp&nbsp&nbsp<input type="radio" name="availability" value="non-available"> Non-Available</td>
+        </tr>
+        <tr>
+            <td><input type="number" name="amount" placeholder="Amount"></td>
+        </tr>
+        <tr>
+            <td>
+                <input class="update-button" type="submit" name="availability_check" value="update">
+            </td>
         </tr>
         </form>
         </table>

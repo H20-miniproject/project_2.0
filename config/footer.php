@@ -21,7 +21,7 @@
 </head>
 <body>
     <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        <p>&copy; 2023 H2O. All rights reserved.</p>
     </footer>
 </body>
 </html>
